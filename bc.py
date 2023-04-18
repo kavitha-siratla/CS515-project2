@@ -548,6 +548,7 @@ def interp(a: ast, env: set[str]):
 # expr = 'true || false && !x'
 for line in input_lines:
     expr = line
+    
     if line.strip().startswith('print'):
         line = line.replace('print',"")
         pvars= line.split(',')
@@ -558,8 +559,6 @@ for line in input_lines:
     else:
         result = parse(expr)
         interp(result,{'x'})
-        print(str(variables))
-        print(result)
 # print(ast.children[0])
 # print(ast.children[0].children[0])
 # print(ast.children[1]) 
