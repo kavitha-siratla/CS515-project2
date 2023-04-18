@@ -218,8 +218,8 @@ def disj(ts: list[token], i: int) -> tuple[ast, int]:
     >>> parse('true || false')
     ast('||', ast('val', True), ast('val', False))
     """
-    if i >= len(ts):
-        raise SyntaxError('expected conjunction, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected conjunction, found EOF')
 
     lhs, i = conj(ts, i)
 
@@ -238,8 +238,8 @@ def conj(ts: list[token], i: int) -> tuple[ast, int]:
     >>> parse('!x && a && !false')
     ast('&&', ast('&&', ast('!', ast('var', 'x')), ast('var', 'a')), ast('!', ast('val', False)))
     """
-    if i >= len(ts):
-        raise SyntaxError('expected conjunction, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected conjunction, found EOF')
 
     lhs, i = assign(ts, i)
 
@@ -272,8 +272,8 @@ def conj(ts: list[token], i: int) -> tuple[ast, int]:
 
 def assign(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected assignment, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected assignment, found EOF')
 
     lhs, i = uninc(ts,i)
     if i<len(ts) and ts[i].typ == 'asg' and ts[i].val == '=':
@@ -284,8 +284,8 @@ def assign(ts: list[token], i: int) -> tuple[ast, int]:
 
 def uninc(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected unary increment, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected unary increment, found EOF')
 
     lhs, i = undec(ts,i)
 
@@ -297,8 +297,8 @@ def uninc(ts: list[token], i: int) -> tuple[ast, int]:
 
 def undec(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected unary decrement, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected unary decrement, found EOF')
 
     lhs, i = expo(ts,i)
     while i < len(ts) and ts[i].typ == 'un' and ts[i].val == '--':
@@ -308,8 +308,8 @@ def undec(ts: list[token], i: int) -> tuple[ast, int]:
 
 def expo(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected divisiom, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected divisiom, found EOF')
 
     lhs, i = mod(ts,i)
     if i<len(ts) and ts[i].typ == 'opr' and ts[i].val == '^':
@@ -320,8 +320,8 @@ def expo(ts: list[token], i: int) -> tuple[ast, int]:
 
 def mod(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected divisiom, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected divisiom, found EOF')
 
     lhs, i = div(ts,i)
     if i<len(ts) and ts[i].typ == 'opr' and ts[i].val == '%':
@@ -332,8 +332,8 @@ def mod(ts: list[token], i: int) -> tuple[ast, int]:
 
 def div(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected divisiom, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected divisiom, found EOF')
 
     lhs, i = mul(ts,i)
     if i<len(ts) and ts[i].typ == 'opr' and ts[i].val == '/':
@@ -344,8 +344,8 @@ def div(ts: list[token], i: int) -> tuple[ast, int]:
 
 def mul(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected multiplication, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected multiplication, found EOF')
 
     lhs, i = add(ts,i)
     if i<len(ts) and ts[i].typ == 'opr' and ts[i].val == '+':
@@ -356,8 +356,8 @@ def mul(ts: list[token], i: int) -> tuple[ast, int]:
 
 def add(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected addition, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected addition, found EOF')
 
     lhs, i = sub(ts,i)
     if i<len(ts) and ts[i].typ == 'opr' and ts[i].val == '+':
@@ -368,8 +368,8 @@ def add(ts: list[token], i: int) -> tuple[ast, int]:
 
 def sub(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected subtraction, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected subtraction, found EOF')
 
     lhs, i = groreq(ts,i)
     if i<len(ts) and ts[i].typ == 'opr' and ts[i].val == '-':
@@ -380,8 +380,8 @@ def sub(ts: list[token], i: int) -> tuple[ast, int]:
 
 def groreq(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected greter or equal, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected greter or equal, found EOF')
 
     lhs, i = leoreq(ts,i)
     if i<len(ts) and ts[i].typ == 'relop' and ts[i].val == '>=':
@@ -392,8 +392,8 @@ def groreq(ts: list[token], i: int) -> tuple[ast, int]:
 
 def leoreq(ts: list[token], i: int) -> tuple[ast, int]:
     
-    if i >= len(ts):
-        raise SyntaxError('expected greter or equal, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected greter or equal, found EOF')
 
     lhs, i = neg(ts,i)
     if i<len(ts) and ts[i].typ == 'relop' and ts[i].val == '<=':
@@ -413,8 +413,8 @@ def neg(ts: list[token], i: int) -> tuple[ast, int]:
     ast('!', ast('!', ast('val', True)))
     """
 
-    if i >= len(ts):
-        raise SyntaxError('expected negation, found EOF')
+    # if i >= len(ts):
+    #     raise SyntaxError('expected negation, found EOF')
 
     if ts[i].typ == 'sym' and ts[i].val == '!':
         a, i = neg(ts, i+1)

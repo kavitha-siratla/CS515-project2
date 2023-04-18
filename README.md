@@ -3,7 +3,7 @@ Kavitha Siratla [ksiratla@stevens.edu](mailto:ksiratla@stevens.edu)
 Rushiraj Herma [rherma@stevens.edu](mailto:rherma@stevens.edu)
 
 # the URL of your public GitHub repo
-https://github.com/Rushiraj0608
+https://github.com/kavitha-siratla/CS515-project2
 
 # an estimate of how many hours you spent on the project
 45 hours
@@ -22,9 +22,10 @@ Finally, we tested the entire project by using a text file as input. This allowe
 
 
 # bugs and issues
+None 
 
 # resolved issue
-
+Faced an issue with print statement.
 
 # Implemented extensions
 # 1) Op-equals
